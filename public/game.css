@@ -1,0 +1,123 @@
+*, *::before, *::after { 
+    box-sizing: border-box;
+  }
+  
+  html, body { 
+    height: 100%;
+    min-height: 100vh;
+    margin: 0;
+    font-family: sans-serif;
+    background-color: ivory(187, 211, 255);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .user-profile{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .welcome-text{
+    align-self: center;
+  }
+
+  .game-options-panel{
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    padding-right: 4rem;
+    gap: 1rem;
+  }
+
+  .new-game-button{
+    background-color: green;
+    color: white;
+    margin: 1rem;
+    border-radius: 1rem;
+  }
+
+  .logout-button{
+    background-color: grey;
+    color: black;
+    margin: 1rem;
+    border-radius: 1rem;
+  }
+
+  .valid-guesses{
+    display: flex;
+    flex-direction: column;
+  }
+
+ .game-layout { 
+    display: grid;
+    grid-template-areas: 
+      "game-form-playarea-layout game-score-panel";
+    grid-template-columns: 60% auto; 
+  }
+  
+  .game-form-playarea-layout{
+    grid-area: game-form-playarea-layout;
+  }
+  
+  .game-score-panel{
+    grid-area: game-score-panel;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    background-color: rgb(190, 255, 190);
+    border: 1px solid black;
+    padding: 1rem;
+    margin: 1rem
+ }
+
+  .guess-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    background-color: lightcyan;
+    border: 1px solid black;
+    margin: 1rem;
+    padding: 1rem;
+  }
+
+  .game-score-panel{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .valid-guess-layout{
+    display: grid;
+    grid-template-areas: 
+      "valid-guess words-layout";
+    grid-template-columns: 30% auto; 
+  }
+  
+  .valid-guess{
+    grid-area: valid-guess;
+    background-color: linen;
+    margin: 1rem;
+    border: 1px solid black;
+  }
+  
+  .words-layout{
+    grid-area: words-layout;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    background-color: linen;
+    padding: 1rem;
+    margin: 1rem;
+    border: 4px solid salmon;
+    line-height: 1.6rem;
+  }
+  
+  .words-paragraphs{
+    flex-shrink: 10;
+    align-self: auto;
+  }
+
+  
