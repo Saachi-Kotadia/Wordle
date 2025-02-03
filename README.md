@@ -1,43 +1,17 @@
-# INFO6250 Project1 - Server-side Dynamic Site
-
-**Due Sun Oct 20, 11:59pm PT**
-
-Special Notes:
-- This is a big part of your grade, please check the requirements CAREFULLY
-- It is absolutely not worth risking it to copy work, the risk is just not worth it.  Make sure you understand the expectations about copying, ChatGPT/Copilot/etc, and referencing anyone's work.
-
-## Submission Instructions
-
-- Start from the up-to-date main branch (git checkout main; git pull origin main)
-- Create a feature branch named 'project1' (git checkout -b project1)
-- Create a package.json and necessary files to complete the work described in this README
-  - You can add/modify any files except as limited below
-    - In particular: Do not load external JS, no client-side/browser JS, do not change words.js
-  - Remember that all work you submit must be based on my code or represent your writing
-    - Do not start from someone else's code - write it all yourself
-    - ChatGPT and other LLMs do not count as writing it yourself
-- Add, commit, and push the branch to github
-    - Don't forget to check the files, this project is not in work/, you may have .gitignore mismatch!
-- Create a PR to merge to main
-- Be sure to include the reviewer(s).
+Server-side Dynamic Site
 
 ## Goals
 
-- You will build a web-based word guessing game
-  - this site will use only backend-generated HTML
-  - this site will use no front-end JS
-- You will demonstrate the skills taught in class
-- Extra Credit: You have visuals, styling, or functionality beyond the minimum required
+- A web-based word guessing game
+  - this site uses only backend-generated HTML
+  - this site uses no front-end JS
 
 ## Functional Requirements
 
-For all the below Requirements: 
 - **Possible words** means the words found in the list in words.js when the program runs
-    - If the list in words.js changes before the program runs, your program will treat the new list as the "possible words"
+    - If the list in words.js changes before the program runs, the program will treat the new list as the "possible words"
 - A **game** means one specific secret word for this user is chosen from the possible words and the user takes multiple turns making guesses
   - A **new game** means a new secret word for this user is selected, the number of guesses made is reset to 0, and the all words in the possible words list are again valid guesses 
-    - Statistics about previous games may be preserved if you wish
-        - This means you can track how many games have been played, how many have been finished, the lowest number of turns before a game was finished, the largest number of turns before a game was finished, or anything other such details that do not impact the current game being played by any player
 - **valid guess** means a guess that is:
   - is one of the possible word, and
   - has not already been guessed this game 
@@ -53,7 +27,7 @@ For all the below Requirements:
 ### Home Page
 
 When the User loads the page (path: `/`)
-- the site will determine if the user is logged in (based on `sid` session cookie)
+- the site determine's if the user is logged in (based on `sid` session cookie)
 
 - If the user is not logged in:
   - the page will display a login form instead of the below content
@@ -152,163 +126,9 @@ A user logs out with a POST to `/logout`
   - The user can log in as the same username and resume the game
 - After the logout process the server will respond with a redirect to the Home Page
 
-Hint: Be sure to test login/logout, resuming a game already in-progress, and related requirements!
-
-## Visual Requirements
-
-- The game requires some effort to visually present the data and forms
-  - spacing, color, and layout of sections should make it readable and presentable as a demonstration of skill
-  - In particular, make sure:
-    - The list of allowed words is formatted to fit on most screens without scrolling
-    - A user playing the game can understand the information they are presented (such as what guesses have been made and their corresponding) 
-- The game does not need to work on mobile screens, but it should look appropriate at a range of desktop sizes
-- This is not a web design class, so I do not expect art.  However, even fully backend coders must be able to present their work pleasantly.
-
 ## Implementation Requirements
-
-- Your code should follow the best-practices outlined in class
-- Your work must demonstrate the skills from class.  Simply "working" is insufficient!
-- The game must be runnable via: 
+- The game is runnable via: 
   - `npm install` 
   - `node server.js`
   - going to `http://localhost:3000`
-- Multiple players must be able to play separate games (from different browsers) simultaneously
-- Logout and a later login must allow you to resume a game
-  - as long as the server has not restarted.  No long-term persistence is expected.
-- The server-side MUST enforce security (session and field validity)
-  - Do not display to the screen any value that came from user input unless that value was allow-filtered on the server
-- You may reuse files or parts of files from previous assignments or classes - but they will be graded by the criteria here!
-- You may create your HTML as you see fit, but it must be fundamentally semantically valid and other best practices from class
-- You may create the CSS as you see fit but you must follow the best practices given in class and obey any restrictions listed here
-- You may add icons and background images but there is no requirement to do so
-  - So long as any icons are done without outside JS or CSS
-- You should install `express` and `cookie-parser` modules ONLY
-- Do not use external JS other than the above
-  - This includes express-session.  Do not use express-session. 
-  - Built in options (ones you do not have to install with npm) like Math are not external libraries and are allowed
-- You must add additional JS files (server-side ONLY) that YOU write to uphold the idea of separation of concerns
-- You must use the correct HTTP methods (GET for loading pages, POST for adding content)
-- Reloading a page should not trigger a POST (use a redirect)
-  - Except for any listed cases with invalid sessions
-- Do not use external CSS libraries
-- You may not use CSS floats to do more than manage flowing text with images
-- You may not use HTML tables or CSS table layouts
-- Do not have any files in your PR except for the project (no files from other assignments, for example)
-- Use arrays and objects when they each make sense
-- Do not use Map() or Set() for this exam
-  - In order to ensure you can use plain objects and arrays 
-  - Map() is not the same as the .map() method on an array - an array .map() is allowed
-- Do not use `var`
-- use `const` and `let` appropriately
-- Do not use `alert`, `prompt`, or other blocking JS prompts
-- Do not use poor variable and function names
-- Do not have functions that are too big/do too much
-- Do not have console.log messages from debugging
-  - The console.log to show the secret word is allowed and required
-- Do not have commented out code
-  - Useful comments as discussed in class are welcome though
-- Do not use localStorage, sessionStorage, or indexedDB
-- Do not use meta tag refreshes
-- Do not use CSS preprocessors, minifiers, or other tools to modify your CSS
-
-## Extra Credit
-
-Styling, appearance, or functionality beyond the above minimums that create a pleasant and professional experience can be worth extra credit.  Extra credit is limited, so focus on the needed requirements first.
-
-- This does not change any requirements, make sure those are still fulfilled
-- This does not permit using outside libraries, services, etc - this is meant o show your advanced knowledge of the concepts from class.
-- Use colors, borders, and whitespace to make different areas clear and distinct
-- Track data about multiple games, showing a personal best, an average score, perhaps a leaderboard of users and the best (lowest) number of guesses to win that is shown to all users
-- improve the experience of the game - make it clear and easy to see what has been guessed and what guesses are available
-- use line-spacing/padding/margins to improve the legibility of text 
-- Put the app in "context" - as a web application on a page/site
-- You do not need to create any additional pages, links to fake pages are permitted if the requirements are all met.
-
-## Grading Rubric
-
-Note: The project is to show your understanding of the material from class.  If you don't do that, you can lose points, even it "it works".  Do NOT copy or generate your work (see "do-not-copy-work.md" at the root of this repo).
-
-This project is graded on a number of categories, each graded on the below scale:
-- Missing (0)
-- Needs Improvement (1)
-- Good (2)
-- Excellent (3)
-
-This means a single mistake might cost you 0 points or more than 1 point, depending on how much that mistake changes your demonstration of the skills from class.
-
-The categories for this project are:
-
-### Submission
-- Does PR follow submission expectations?  (contains only change from assignment, correct branch name, good commit message(s), reviewers assigned)
-- Did you create a correct and usable package.json file?
-- Did you ONLY install permitted modules?
-
-### Overall Requirements
-- Does the app work overall and meet all requirements not covered by other criteria?
-- Were all restrictions not covered by other criteria followed?
-- Does the code demonstrated the requested skills and lessons?
-- Are you using static and dynamic assets per the requirements? (static CSS, dynamic HTML)
-- Would a user understand what to do on each page?
-- Are the requests to login/logout/change stored word all POST requests?
-- Are all POST requests that succeed returning a redirect?
-- Are all non-redirect requests sending full HTML pages?
-
-### Sessions and User Data
-- Are users logged in using a session id?
-- Is the username and attempted guesses validated using an allowlist of valid characters?
-- Are only logged in users shown the option to logout?
-- Does logout remove the sid from both the server side session AND the browser?
-- Are games stored outside of the session?
-- Are games tracked by username?
-- Can multiple users (using different profiles/browsers) log in at the same time and not see or overwrite each others' data?
-- Can a user reload the page and continue to see and play their game?
-- Can a users each play games at the same general time without interfereing with each other?
-- Can a user logout and log back in to still see their game in progress?
-
-### Model View Controller (MVC)/Separation of Concerns (SOC)
-- Are stored values and logic about the stored values (models) separated from HTML generation (views) and server routes (controller)?
-- Are functions and files named so their meaning and purpose within the MVC/SOC concepts are understandable?
-- Can `words.js` be replaced with a new list of words and the program works with that new list?
-
-### Security
-- Do the necessary backend routes (`/guess`, `/new-game`) check the validity of the session id and respond as required?
-- Do the necessary backend routes (`/guess`, `/login`) properly sanitize the input and respond as required?
-- Is "dog" denied access differently than a username of invalid characters?
-- Are inputs checked using an allowlist of permitted characters?
-
-### Visual Requirements
-- Is all text legible? Of sufficient size, clarity, and contrast?
-- Are different parts of the page content visually distinct?
-- Is it clear what the user should do?
-- Is it clear what the user can do?
-- Is it clear what the information on screen means?
-- Is the list of allowed words formatted to fit on most screens without scrolling?
-- Does the page handle most reasonable desktop sizes without jumbled presentation or horizontal scrolling?
-
-### JS Quality 
-- Is the JS following the best practices given in the course?
-- Are functions and variables named meaningfully?
-- Are functions doing too many different things?
-- Is code visually broken up into "paragraphs" with different purposes?
-- Are comments helpful?  Not just repeating what the code says, and providing context or reasoning?
-- Is code indented and formatted consistently and according to the best practices provided in the course?
-
-### HTML & CSS Quality
-- Is the HTML complete and valid?
-- Are all form fields properly associated with a text label?
-    - Quick test: click on the text of the label, the field should be selected
-- Are the HTML and CSS formatted and indented per the standards given in the course?
-- Does the content work at various reasonable "desktop" sizes of a browser window?
-- Are HTML elements used in semanatically appropriate ways?
-- Are Semantic HTML elements used when available and appropriate?
-- Are all class names semantic and kebab-case (or BEM) style?
-- Does the page work when there are enough guesses to require scrolling?
-
-### Extra Credit
-Not all of these are required to receive credit.  The total impression of the below is ranked on the 3 point rubric considering what is _beyond the requirements_.
-- Do you have colors/visual spacing/whitespace to improve legibility and focus notably beyond basic requirements?
-- Do you provide additional page elements to provide additional context of the app and a place for future options?
-- Do you provide a pleasant game experience in terms of understanding each turn and the state of the game?
-- Are you presenting additional information that demonstrates a deep understanding of state impacted by multiple users among web requests?
-
 
